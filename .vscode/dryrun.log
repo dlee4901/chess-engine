@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/daniel/_github/chess-engine'
+make: Leaving directory `/Users/daniel/_github/chess-engine'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
