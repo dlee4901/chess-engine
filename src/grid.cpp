@@ -4,25 +4,20 @@ Grid::Grid(int x, int y)
 {
     max_x = x;
     max_y = y;
-    std::vector<Entity*> column(8, nullptr);
-    for (int i = 0; i < max_y; i++)
+    for (int i = 0; i < max_x; i++)
     {
+        std::vector<Entity> column;
+        for (int j = 0; j < max_y; j++)
+        {
+            Entity entity;
+            column.push_back(entity);
+        }
         grid.push_back(column);
     }
 }
 
-Grid::~Grid()
-{
-    for (int i = 0; i < grid.size(); i++)
-    {
-        for (int j = 0; j < grid[i].size(); j++)
-        {
-            delete grid[i][j];
-        }
-    }
-}
 
-void Grid::add_entity(int x, int y, Entity* entity)
+void Grid::add_entity(int x, int y, Entity entity)
 {
     grid[x][y] = entity;
 }
@@ -33,7 +28,7 @@ void Grid::add_entity(int x, int y, Entity* entity)
 //     std::vector<Movement> movement = piece->get_movement();
 // }
 
-Entity* Grid::get_entity(int x, int y)
+Entity Grid::get_entity(int x, int y)
 {
     return grid[x][y];
 }
@@ -44,14 +39,14 @@ void Grid::print_grid()
     {
         for (int j = 0; j < max_y; j++)
         {
-            Entity* entity = get_entity(i, j);
-            if (entity == nullptr)
+            Entity entity = get_entity(i, j);
+            if (entity.get_type() == "null")
             {
                 std::cout << "*\t\t";
             }
             else
             {
-                std::cout << entity->get_name() << "\t";
+                std::cout << entity.get_name() << "\t";
             }
         }
         std::cout << std::endl;

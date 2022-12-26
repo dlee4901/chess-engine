@@ -65,6 +65,28 @@
         "functional": "cpp",
         "iterator": "cpp",
         "utility": "cpp",
-        "any": "cpp"
-    }
+        "any": "cpp",
+        "__tree": "cpp",
+        "charconv": "cpp",
+        "cinttypes": "cpp",
+        "condition_variable": "cpp",
+        "deque": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "numeric": "cpp",
+        "queue": "cpp",
+        "random": "cpp",
+        "set": "cpp",
+        "shared_mutex": "cpp",
+        "stack": "cpp",
+        "thread": "cpp",
+        "typeindex": "cpp",
+        "unordered_set": "cpp",
+        "valarray": "cpp"
+    },
+    "C_Cpp.intelliSenseEngineFallback": "enabled"
 }
