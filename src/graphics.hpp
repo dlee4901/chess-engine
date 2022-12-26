@@ -1,7 +1,7 @@
-#include <SDL.h>
-#include <SDL_image.h>
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
-#include <string>
+#include "util.hpp"
 
 class Graphics
 {
@@ -22,3 +22,5 @@ public:
     void close();
     void print_error(const char * format, ...);
 };
+
+#endif

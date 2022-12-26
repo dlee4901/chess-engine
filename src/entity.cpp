@@ -1,25 +1,20 @@
 #include "entity.hpp"
 
-Entity::Entity()
-{
-    type = "null";
-}
-
-Entity::Entity(std::string type, std::string name, std::string controller, std::vector<Movement> movement)
+Entity::Entity(std::string type, std::string name, std::string controller, std::vector<Movement> movements)
 {
     this->type = type;
     this->name = name;
     this->controller = controller;
-    this->movement = movement;
+    this->movements = movements;
     init_state();
 }
 
-Entity::Entity(std::string type, std::string name, std::string controller, std::vector<Movement> movement, std::unordered_map<std::string, std::any> state)
+Entity::Entity(std::string type, std::string name, std::string controller, std::vector<Movement> movements, std::unordered_map<std::string, std::any> state)
 {
     this->type = type;
     this->name = name;
     this->controller = controller;
-    this->movement = movement;
+    this->movements = movements;
     this->state = state;
 }
 
@@ -59,7 +54,7 @@ std::unordered_map<std::string, std::any> Entity::get_state()
     return state;
 }
 
-std::vector<Movement> Entity::get_movement()
+std::vector<Movement> Entity::get_movements()
 {
-    return movement;
+    return movements;
 }

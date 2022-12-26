@@ -4,6 +4,29 @@ Movement::Movement(std::string condition, std::string action)
 {
     this->condition = condition;
     this->action = action;
+    parameters = "";
+}
+
+Movement::Movement(std::string condition, std::string action, std::string parameters)
+{
+    this->condition = condition;
+    this->action = action;
+    this->parameters = parameters;
+}
+
+std::string Movement::get_condition()
+{
+    return condition;
+}
+
+std::string Movement::get_action()
+{
+    return action;
+}
+
+std::string Movement::get_parameters()
+{
+    return parameters;
 }
 
 // movement types: step, orthogonal, diagonal, line, N, E, S, W, NE, SE, SW, NW
@@ -11,7 +34,14 @@ Movement::Movement(std::string condition, std::string action)
 // *orthogonal
 //
 // knight: 
-// 1N2E 1N2W 2N1E 2N1W 1S2E 1S2W 2S1E 2S1W
+// 1N 2E 
+// 1N 2W
+// 2N 1E
+// 2N 1W 
+// 1S 2E 
+// 1S 2W 
+// 2S 1E 
+// 2S 1W
 //
 // bishop: 
 // *diagonal
