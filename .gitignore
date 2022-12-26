@@ -51,3 +51,5 @@ _deps
 # PROJECT #
 out/build
 [Bb][Uu][Ii][Ll][Dd]
+
+.DS_Store
