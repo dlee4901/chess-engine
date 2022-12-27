@@ -17,7 +17,8 @@ public:
     void add_entity(int x, int y, Entity entity);
     void select(int x, int y);
 
-    std::set< std::pair<int, int> > get_movement_options(int x, int y);
+    std::vector< std::pair<int, int> > transform(std::vector< std::pair<int, int> > &grid, int x, int y);
+    std::vector< std::pair<int, int> > get_movement_options(int x, int y);
     Entity get_entity(int x, int y);
     
     void print_grid();

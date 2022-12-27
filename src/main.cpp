@@ -25,7 +25,8 @@ std::vector<Entity> create_pieces()
     std::vector<Movement> bishop_move{Movement("", "*diagonal")};
     std::vector<Movement> queen_move{Movement("", "*line")};
     std::vector<Movement> king_move{Movement("", "1line")};
-    std::vector<Movement> pawn_move{Movement("!has_moved", "2N"), Movement("1NE enemy", "1NE"), Movement("1NW enemy", "1NW"), Movement("", "1N")};
+    std::vector<Movement> pawn_white_move{Movement("!has_moved", "2N"), Movement("1NE enemy", "1NE"), Movement("1NW enemy", "1NW"), Movement("", "1N")};
+    std::vector<Movement> pawn_black_move{Movement("!has_moved", "2S"), Movement("1NE enemy", "1SE"), Movement("1NW enemy", "1SW"), Movement("", "1S")};
     
     pieces.push_back(Entity("piece", "rook_white", "player1", rook_move));
     pieces.push_back(Entity("piece", "knight_white", "player1", knight_move));
@@ -37,7 +38,7 @@ std::vector<Entity> create_pieces()
     pieces.push_back(Entity("piece", "rook_white", "player1", rook_move));
     for (int i = 0; i < 8; i++)
     {
-        pieces.push_back(Entity("piece", "pawn_white", "player1", pawn_move));
+        pieces.push_back(Entity("piece", "pawn_white", "player1", pawn_white_move));
     }
 
     pieces.push_back(Entity("piece", "rook_black", "player2", rook_move));
@@ -50,7 +51,7 @@ std::vector<Entity> create_pieces()
     pieces.push_back(Entity("piece", "rook_black", "player2", rook_move));
     for (int i = 0; i < 8; i++)
     {
-        pieces.push_back(Entity("piece", "pawn_black", "player2", pawn_move));
+        pieces.push_back(Entity("piece", "pawn_black", "player2", pawn_black_move));
     }
 
     return pieces;

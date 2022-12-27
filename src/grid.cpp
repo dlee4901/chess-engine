@@ -27,9 +27,20 @@ void Grid::select(int x, int y)
     selected_y = y;
 }
 
-std::set< std::pair<int, int> > Grid::get_movement_options(int x, int y)
+std::vector< std::pair<int, int> > Grid::transform(std::vector< std::pair<int, int> > &squares, int x, int y)
 {
-    std::set< std::pair<int, int> > movement_options;
+    for (std::pair<int, int> square : squares)
+    {
+        square.first += x;
+        square.second += y;
+    }
+    return squares;
+}
+
+std::vector< std::pair<int, int> > Grid::get_movement_options(int x, int y)
+{
+    std::vector< std::pair<int, int> > movement_options;
+    movement_options.push_back(std::pair(x, y));
     Entity piece = grid[x][y]; 
     std::string name = piece.get_name();
     std::vector<Movement> movements = piece.get_movements();
@@ -39,16 +50,30 @@ std::set< std::pair<int, int> > Grid::get_movement_options(int x, int y)
         std::vector<std::string> moves = split(action, " ");
         for (std::string move : moves)
         {
-            int dist = -1;
-            
+            int loc_x = x;
+            int loc_y = y;
+            int distance = 0;
+            std::string direction = "";
             for (int i = 0; i < move.length(); i++)
             {
-                if (dist < 0 && !isdigit(move[i]))
+                if (distance == 0 && isalpha(move[i]))
                 {
-                    dist = stoi(move.substr(0, i));
+                    std::string dist = move.substr(0, i);
+                    if (dist == "*") { distance = -1; }
+                    else             { distance = stoi(dist); }
+                    direction = move.substr(i);
+                    break;
                 }
-
             }
+
+            if (direction == "N")       { transform(movement_options, 0, distance); }
+            else if (direction == "E")  { transform(movement_options, distance, 0); }
+            else if (direction == "S")  { transform(movement_options, 0, -distance); }
+            else if (direction == "W")  { transform(movement_options, -distance, 0); }
+            else if (direction == "NE") { transform(movement_options, distance, distance); }
+            else if (direction == "SE") { transform(movement_options, distance, -distance); }
+            else if (direction == "SW") { transform(movement_options, -distance, -distance); }
+            else if (direction == "NW") { transform(movement_options, -distance, distance); }
         }
     }
     return movement_options;
