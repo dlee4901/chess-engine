@@ -1,6 +1,7 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include <algorithm>
 #include <any>
 #include <cctype>
 #include <iostream>

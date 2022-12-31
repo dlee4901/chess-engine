@@ -12,7 +12,7 @@ class Entity
     std::unordered_map<std::string, std::any> state;
 
 public:
-    Entity() {};
+    Entity();
     Entity(std::string type, std::string name, std::string controller, std::vector<Movement> movements);
     Entity(std::string type, std::string name, std::string controller, std::vector<Movement> movements, std::unordered_map<std::string, std::any> state);
     void init_state();

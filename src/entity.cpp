@@ -1,5 +1,10 @@
 #include "entity.hpp"
 
+Entity::Entity()
+{
+    type = "null";
+}
+
 Entity::Entity(std::string type, std::string name, std::string controller, std::vector<Movement> movements)
 {
     this->type = type;

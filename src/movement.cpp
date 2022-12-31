@@ -29,6 +29,17 @@ std::string Movement::get_parameters()
     return parameters;
 }
 
+std::unordered_map<std::string, bool> Movement::get_valid_directions()
+{
+    std::vector<std::string> valid_directions {"step", "orthogonal", "diagonal", "line", "N", "E", "S", "W", "NE", "SE", "SW", "NW"};
+    std::unordered_map<std::string, bool> map_valid_directions;
+    for (std::string i : valid_directions)
+    {
+        map_valid_directions[i] = true;
+    }
+    return map_valid_directions;
+}
+
 // movement types: step, orthogonal, diagonal, line, N, E, S, W, NE, SE, SW, NW
 // rook: 
 // *orthogonal

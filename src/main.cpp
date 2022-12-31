@@ -8,8 +8,22 @@ int main()
 {
     std::vector<Entity> pieces = create_pieces();
     Grid board = create_chess_game(pieces);
+
+    std::vector<Movement> rook_move{Movement("", "*orthogonal")};
+    Entity rook("piece", "rook_white", "player1", rook_move);
+    board.add_entity(0, 4, rook);
+
+    std::vector<Movement> bishop_move{Movement("", "*diagonal")};
+    Entity bishop("piece", "bishop_white", "player1", bishop_move);
+    board.add_entity(3, 5, bishop);
+
     board.print_grid();
 
+    std::vector< std::pair<int, int> > m = board.get_movement_options(3, 5);
+    for (std::pair<int, int> i : m)
+    {
+        std::cout << i.first << " " << i.second << std::endl;
+    }
     //Graphics test;
 
     return 0;
@@ -31,8 +45,8 @@ std::vector<Entity> create_pieces()
     pieces.push_back(Entity("piece", "rook_white", "player1", rook_move));
     pieces.push_back(Entity("piece", "knight_white", "player1", knight_move));
     pieces.push_back(Entity("piece", "bishop_white", "player1", bishop_move));
-    pieces.push_back(Entity("piece", "king_white", "player1", king_move));
     pieces.push_back(Entity("piece", "queen_white", "player1", queen_move));
+    pieces.push_back(Entity("piece", "king_white", "player1", king_move));
     pieces.push_back(Entity("piece", "bishop_white", "player1", bishop_move));
     pieces.push_back(Entity("piece", "knight_white", "player1", knight_move));
     pieces.push_back(Entity("piece", "rook_white", "player1", rook_move));
@@ -44,8 +58,8 @@ std::vector<Entity> create_pieces()
     pieces.push_back(Entity("piece", "rook_black", "player2", rook_move));
     pieces.push_back(Entity("piece", "knight_black", "player2", knight_move));
     pieces.push_back(Entity("piece", "bishop_black", "player2", bishop_move));
-    pieces.push_back(Entity("piece", "king_black", "player2", king_move));
     pieces.push_back(Entity("piece", "queen_black", "player2", queen_move));
+    pieces.push_back(Entity("piece", "king_black", "player2", king_move));
     pieces.push_back(Entity("piece", "bishop_black", "player2", bishop_move));
     pieces.push_back(Entity("piece", "knight_black", "player2", knight_move));
     pieces.push_back(Entity("piece", "rook_black", "player2", rook_move));
@@ -64,22 +78,22 @@ Grid create_chess_game(std::vector<Entity> pieces)
     // white non-pawns
     for (int i = 0; i < 8; i++)
     {
-        board.add_entity(0, i, pieces[i]);
+        board.add_entity(i, 0, pieces[i]);
     }
     // white pawns
     for (int i = 0; i < 8; i++)
     {
-        board.add_entity(1, i, pieces[i+8]);
+        board.add_entity(i, 1, pieces[i+8]);
     }
     // black non-pawns
     for (int i = 0; i < 8; i++)
     {
-        board.add_entity(7, i, pieces[i+16]);
+        board.add_entity(i, 7, pieces[i+16]);
     }
     // black pawns
     for (int i = 0; i < 8; i++)
     {
-        board.add_entity(6, i, pieces[i+24]);
+        board.add_entity(i, 6, pieces[i+24]);
     }
 
     return board;

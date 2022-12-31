@@ -17,6 +17,7 @@ public:
     void add_entity(int x, int y, Entity entity);
     void select(int x, int y);
 
+    std::vector< std::pair<int, int> > project(std::vector< std::pair<int, int> > &grid, std::string type, int distance);
     std::vector< std::pair<int, int> > transform(std::vector< std::pair<int, int> > &grid, int x, int y);
     std::vector< std::pair<int, int> > get_movement_options(int x, int y);
     Entity get_entity(int x, int y);
